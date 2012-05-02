@@ -56,7 +56,7 @@
       (message "could not find a partial declaration"))))
 
 (defun partially/search-paths (path)
-  (let ((current-dir (file-name-directory default-directory))
+  (let ((current-dir (file-name-directory buffer-file-name))
         (root (partially/root)))
     (or (partially/find-file-if-present (concat current-dir path ".html.erb"))
         (partially/find-file-if-present (concat current-dir path ".rhtml"))
