@@ -42,7 +42,7 @@
 (defun partially/partial-on-line ()
   (let ((str (partially/partial-string-on-line)))
     (when str
-      (if (string-match "/\\([a-z\.]+\\)" str)
+      (if (string-match "/\\([a-z\.]+\\)$" str)
           (partially/partialize-file-name-in-path (match-string 1 str) str)
         (concat "_" str)))))
 
@@ -51,7 +51,7 @@
 
 (defun partially/partial-string-on-line ()
   (let ((line (buffer-substring (point-at-bol) (point-at-eol))))
-    (if (string-match "partial\\(: +\\| +=> +\\)['\"]\\([a-z_0-9/]+\\)['\"]" line)
+    (if (string-match "partial\\(: +\\| +=> +\\)['\"]/?\\([a-z_0-9/]+\\)['\"]" line)
         (match-string 2 line)
       (message "could not find a partial declaration"))))
 
