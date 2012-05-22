@@ -42,7 +42,7 @@
 (defun partially/partial-on-line ()
   (let ((str (partially/partial-string-on-line)))
     (when str
-      (if (string-match "/\\([a-z\.]+\\)$" str)
+      (if (string-match "/\\([a-z\._]+\\)$" str)
           (partially/partialize-file-name-in-path (match-string 1 str) str)
         (concat "_" str)))))
 
